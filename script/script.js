@@ -34,3 +34,16 @@ function operate(firstNumber, secondNumber, operator) {
             break;
     }
 }
+
+
+const numberButtons = document.querySelectorAll(".numberButtons");
+const display = document.querySelector("#display");
+
+let displayValue = "";
+
+numberButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+        displayValue += event.target.textContent;
+        display.textContent = displayValue;
+    })
+})
