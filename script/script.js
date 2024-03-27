@@ -1,3 +1,10 @@
+//global variables
+let displayValue = "";
+let firstNumber;
+let secondNumber;
+let operator;
+
+
 function add(num1, num2) {
     return num1 + num2;
 }
@@ -14,46 +21,63 @@ function divide(num1, num2) {
     return num1 / num2;
 }
 
-let firstNumber;
-let secondNumber;
-let operator;
 
 function operate(firstNumber, secondNumber, operator) {
     switch (operator) {
-        case value: add;
-            add(firstNumber, secondNumber);
+        case "+":
+            return add(firstNumber, secondNumber);
             break;
-        case value: subtract;
-            subtract(firstNumber, secondNumber);
+        case "-":
+            return subtract(firstNumber, secondNumber);
             break;
-        case value: multipy
-            multipy(firstNumber, secondNumber);
+        case "*": 
+            return multipy(firstNumber, secondNumber);
             break;
-        case value: divide
-            divide(firstNumber, secondNumber);
+        case "/": 
+            return divide(firstNumber, secondNumber);
             break;
     }
 }
 
-
 const numberButtons = document.querySelectorAll(".numberButtons");
 const display = document.querySelector("#display");
+getNumberInput(numberButtons);
 
-let displayValue = "";
-
-numberButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
-        displayValue += event.target.textContent;
-        display.textContent = displayValue;
+function getNumberInput(numberButtons) {
+    numberButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+            displayValue += event.target.textContent;
+            display.textContent = displayValue;
+        })
     })
+}add
+
+const operatorButtons = document.querySelectorAll(".operatorButtons");
+getOperatorInput(operatorButtons);
+
+function getOperatorInput(operatorButtons) {
+    operatorButtons.forEach(button => {
+        button.addEventListener("click", (event) =>{
+            operator = event.target.textContent;
+            console.log(operator);
+            setFirstNumber(displayValue);
+            console.log(firstNumber);
+            displayValue = "";
+        })
+    });
+}
+
+const equalButton = document.querySelector("#equals");
+equalButton.addEventListener("click", () => {
+    setSecondNumber(displayValue);
+    console.log(secondNumber);
 })
 
-let selcetedOperator = "";
-const operatorButtons = document.querySelectorAll(".operatorButtons");
-operatorButtons.forEach(button => {
-    button.addEventListener("click", (event) =>{
-        selcetedOperator = event.target.textContent;
-        console.log(selcetedOperator);
-    })
-});
+function setFirstNumber(num) {
+    firstNumber = parseInt(num);
+}
+
+function setSecondNumber(num) {
+    secondNumber = parseInt(num);
+}
 
