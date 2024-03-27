@@ -47,3 +47,13 @@ numberButtons.forEach((button) => {
         display.textContent = displayValue;
     })
 })
+
+let selcetedOperator = "";
+const operatorButtons = document.querySelectorAll(".operatorButtons");
+operatorButtons.forEach(button => {
+    button.addEventListener("click", (event) =>{
+        selcetedOperator = event.target.textContent;
+        console.log(selcetedOperator);
+    })
+});
+
