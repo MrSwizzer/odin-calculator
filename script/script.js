@@ -47,7 +47,7 @@ function getNumberInput(numberButtons) {
     numberButtons.forEach((button) => {
         button.addEventListener("click", (event) => {
             displayValue += event.target.textContent;
-            display.textContent = displayValue;
+            setDisplay(displayValue);
         })
     })
 }add
@@ -59,9 +59,9 @@ function getOperatorInput(operatorButtons) {
     operatorButtons.forEach(button => {
         button.addEventListener("click", (event) =>{
             operator = event.target.textContent;
-            console.log(operator);
             setFirstNumber(displayValue);
             console.log(firstNumber);
+            console.log(operator);
             displayValue = "";
         })
     });
@@ -71,6 +71,7 @@ const equalButton = document.querySelector("#equals");
 equalButton.addEventListener("click", () => {
     setSecondNumber(displayValue);
     console.log(secondNumber);
+    setDisplay(operate(firstNumber,secondNumber,operator));
 })
 
 function setFirstNumber(num) {
@@ -79,5 +80,9 @@ function setFirstNumber(num) {
 
 function setSecondNumber(num) {
     secondNumber = parseInt(num);
+}
+
+function setDisplay(displayValue) {
+    display.textContent = displayValue;
 }
 
