@@ -7,19 +7,19 @@ let secondOperator = "";
 let firstNumberCheck = false;
 
 function add(num1, num2) {
-    return Math.round(num1 + num2);
+    return Math.round((num1 + num2) * 100) / 100;
 }
 
 function subtract(num1, num2) {
-    return Math.round(num1 - num2);
+    return Math.round((num1 - num2) * 100) / 100;
 }
 
 function multipy(num1, num2) {
-    return Math.round(num1 * num2);
+    return Math.round((num1 * num2) * 100) / 100;
 }
 
 function divide(num1, num2) {
-    return Math.round(num1 / num2);
+    return Math.round((num1 / num2) * 100) / 100;
 }
 
 function operate(firstNumber, secondNumber, operator) {
@@ -96,6 +96,20 @@ function getEqualInput(equalButton) {
     })
 }
 getEqualInput(equalButton);
+
+const clearButton = document.querySelector("#clear");
+function clearPress(params) {
+    clearButton.addEventListener("click", () => {
+        displayValue = "";
+        firstNumber = "";
+        secondNumber = "";
+        firstOperator = "";
+        secondOperator = "";
+        firstNumberCheck = false;
+        setDisplay("0");
+    })
+}
+clearPress();
 
 function setFirstNumber(num) {
     firstNumber = parseInt(num);
