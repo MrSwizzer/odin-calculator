@@ -5,6 +5,7 @@ let secondNumber = "";
 let firstOperator = "";
 let secondOperator = "";
 let firstNumberCheck = false;
+let lastOperatorEqualCheck = false;
 
 function add(num1, num2) {
     return Math.round((num1 + num2) * 100) / 100;
@@ -34,6 +35,9 @@ function operate(firstNumber, secondNumber, operator) {
             return multipy(firstNumber, secondNumber);
             break;
         case "/":
+            if (secondNumber === 0) {
+                return "Well well well seems like you tried dividing by 0: ERROR"
+            }
             return divide(firstNumber, secondNumber);
             break;
     }
@@ -63,7 +67,10 @@ function getOperatorInput(operatorButtons) {
                 //Store the operator in the firstOperator variable since it is used when another operator button was pressed
                 firstOperator = event.target.textContent;
             }
-
+            else if (lastOperatorEqualCheck) {
+                firstOperator = event.target.textContent;
+                lastOperatorEqualCheck = false;
+            }
             else {
                 //If firstNumber is assigned we can assign the display Value to the secondNumber
                 setSecondNumber(displayValue);
@@ -88,11 +95,13 @@ function getEqualInput(equalButton) {
         setSecondNumber(displayValue);
         if (secondOperator.length > 0) {
             setDisplay(operate(firstNumber, secondNumber, secondOperator));
+            firstNumber = operate(firstNumber, secondNumber, firstOperator);
             //Check for firstNumber so if equal is pressed before nothing happens
         } else if (firstNumberCheck) {
             setDisplay(operate(firstNumber, secondNumber, firstOperator));
+            firstNumber = operate(firstNumber, secondNumber, firstOperator);
         }
-
+        lastOperatorEqualCheck = true;
     })
 }
 getEqualInput(equalButton);
