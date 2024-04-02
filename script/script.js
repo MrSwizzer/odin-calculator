@@ -6,6 +6,7 @@ let firstOperator = "";
 let secondOperator = "";
 let firstNumberCheck = false;
 let lastOperatorEqualCheck = false;
+let decimalDotCheck = false;
 
 function add(num1, num2) {
     return Math.round((num1 + num2) * 100) / 100;
@@ -56,6 +57,18 @@ function getNumberInput(numberButtons) {
 }
 getNumberInput(numberButtons);
 
+const decimalDot = document.querySelector("#dot");
+function getDecimalDotInput(decimalDot) {
+    decimalDot.addEventListener("click", (event) =>{
+        if (!decimalDotCheck) {
+            decimalDotCheck = true;
+            displayValue += event.target.textContent;
+            setDisplay(displayValue);
+        }
+    })
+}
+getDecimalDotInput(decimalDot);
+
 const operatorButtons = document.querySelectorAll(".operatorButtons");
 function getOperatorInput(operatorButtons) {
     operatorButtons.forEach(button => {
@@ -68,6 +81,7 @@ function getOperatorInput(operatorButtons) {
                 firstOperator = event.target.textContent;
             }
             else if (lastOperatorEqualCheck) {
+                //Keep the operator, but don't do any calculations
                 firstOperator = event.target.textContent;
                 lastOperatorEqualCheck = false;
             }
@@ -84,6 +98,7 @@ function getOperatorInput(operatorButtons) {
                 firstOperator = secondOperator;
             }
             displayValue = "";
+            decimalDotCheck = false;
         })
     });
 }
@@ -102,9 +117,12 @@ function getEqualInput(equalButton) {
             firstNumber = operate(firstNumber, secondNumber, firstOperator);
         }
         lastOperatorEqualCheck = true;
+        decimalDotCheck = false;
     })
 }
 getEqualInput(equalButton);
+
+
 
 const clearButton = document.querySelector("#clear");
 function clearPress(params) {
@@ -115,17 +133,18 @@ function clearPress(params) {
         firstOperator = "";
         secondOperator = "";
         firstNumberCheck = false;
+        decimalDotCheck = false;
         setDisplay("0");
     })
 }
 clearPress();
 
 function setFirstNumber(num) {
-    firstNumber = parseInt(num);
+    firstNumber = parseFloat(num);
 }
 
 function setSecondNumber(num) {
-    secondNumber = parseInt(num);
+    secondNumber = parseFloat(num);
 }
 
 function setDisplay(displayValue) {
