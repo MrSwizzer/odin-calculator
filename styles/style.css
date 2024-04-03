@@ -1,0 +1,83 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    font: inherit;
+    border-radius: 4px;
+    border: black solid 1px;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 415px;
+    gap: 5px;
+    margin: 50px;
+}
+
+.numberButtons {
+    width: 100px;
+    height: 100px;
+    background-color: coral;
+}
+
+.numberButtons:hover {
+    background-color: rgb(255, 113, 62);
+}
+
+.operatorButtons {
+    width: 100px;
+    height: 100px;
+    background-color: cornflowerblue;
+}
+
+.operatorButtons:hover {
+    background-color: rgb(83, 134, 230);
+}
+
+#dot {
+    width: 100px;
+    height: 100px;
+    background-color: coral;
+}
+
+#dot:hover {
+    background-color: rgb(255, 113, 62);
+}
+
+#equals {
+    width: 100px;
+    height: 100px;
+    background-color:rgb(81, 170, 81)
+}
+
+#equals:hover {
+    background-color:rgb(66, 168, 66)
+}
+
+#display {
+    border-radius: 4px;
+    border: black solid 1px;
+    width: 308px;
+    height: 98px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+#clear {
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+}
+
+#clear:hover {
+    background-color: rgb(117, 117, 117);
+}
