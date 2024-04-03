@@ -108,11 +108,11 @@ const equalButton = document.querySelector("#equals");
 function getEqualInput(equalButton) {
     equalButton.addEventListener("click", () => {
         setSecondNumber(displayValue);
-        if (secondOperator.length > 0) {
+        if (secondOperator.length > 0 && !lastOperatorEqualCheck) {
             setDisplay(operate(firstNumber, secondNumber, secondOperator));
             firstNumber = operate(firstNumber, secondNumber, firstOperator);
             //Check for firstNumber so if equal is pressed before nothing happens
-        } else if (firstNumberCheck) {
+        } else if (firstNumberCheck && !lastOperatorEqualCheck) {
             setDisplay(operate(firstNumber, secondNumber, firstOperator));
             firstNumber = operate(firstNumber, secondNumber, firstOperator);
         }
