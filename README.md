@@ -17,7 +17,7 @@ This project is part of **The Odin Project's Foundation curriculum**, where I cr
 
 ## 📸 Preview
 
-You can try out the calculator by opening the here: [Live Demo](https://myaccount.github.io/calculator)
+You can try out the calculator by opening the here: [Live Demo](https://mrswizzer.github.io/odin-calculator)
 
 ![Preview](./preview-pics/preview.png)
 
